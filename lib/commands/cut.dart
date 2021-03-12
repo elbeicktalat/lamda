@@ -16,8 +16,7 @@ class Cut implements Command {
     firstArg = args.first.toLowerCase();
     if (firstArg == command) {
       final file = File(args[1]);
-      final path = Directory.current.uri.toString().substring(8);
-      await file.copy('${path + args[2] + '/' + args[1]}');
+      await file.copy(args[2]);
       await file.delete().then(
             (value) => print(
               ProgressSuccessful(
