@@ -1,5 +1,5 @@
 import 'package:lamda/lamda.dart' as lamda;
 
-void main(List<String> arguments) {
-  print('Hello world: ${lamda.message()}!');
+void main(List<String> args) {
+  lamda.run(args);
 }
