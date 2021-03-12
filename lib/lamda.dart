@@ -15,6 +15,29 @@ ReName _reName = ReName();
 Copy _copy = Copy();
 Cut _cut = Cut();
 
+List<Map<String, String>> _commands = [
+  {_make.command: _make.description},
+  {_delete.command: _delete.description},
+  {_reName.command: _reName.description},
+  {_copy.command: _copy.description},
+  {_cut.command: _cut.description},
+];
+
+void _printListOfCommand() {
+  for (var i = 0; i < _commands.length; i++) {
+    _commands[i].forEach((key, value) {
+      print('$key \t\t $value');
+    });
+  }
+}
+
+void welcome() {
+  print(
+      'Welcome in lamda this tool is very helpful for who like the commands line.');
+  print("Here below you'll find the available commands\n");
+  _printListOfCommand();
+}
+
 void run(List<String> args) {
   try {
     _make.make(args);
