@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:lamda/src/command.dart';
+import 'package:lamda/src/progress_successful.dart';
 
 class Copy implements Command {
   @override
@@ -16,8 +17,13 @@ class Copy implements Command {
     if (firstArg == command) {
       final file = File(args[1]);
       final path = Directory.current.uri.toString().substring(8);
-      await file.copy('${path + args[2] + '/' + args[1]}').then((value) => print(
-          'copy \x1B[34m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m is successfully!'));
+      await file.copy('${path + args[2] + '/' + args[1]}').then(
+            (value) => print(
+              ProgressSuccessful(
+                'copy \x1B[34m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m',
+              ),
+            ),
+          );
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:lamda/src/command.dart';
+import 'package:lamda/src/progress_successful.dart';
 
 class Cut implements Command {
   @override
@@ -17,8 +18,13 @@ class Cut implements Command {
       final file = File(args[1]);
       final path = Directory.current.uri.toString().substring(8);
       await file.copy('${path + args[2] + '/' + args[1]}');
-      await file.delete().then((value) => print(
-          'cut \x1B[31m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m is successfully!'));
+      await file.delete().then(
+            (value) => print(
+              ProgressSuccessful(
+                'cut \x1B[31m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m',
+              ),
+            ),
+          );
     }
   }
 }

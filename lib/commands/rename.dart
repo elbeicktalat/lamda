@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:lamda/src/command.dart';
+import 'package:lamda/src/progress_successful.dart';
 
 class ReName implements Command {
   @override
@@ -20,13 +21,23 @@ class ReName implements Command {
       for (index = 2; index < args.length; index += 2) {
         if (secondArg == 'file') {
           final file = File(args[index]);
-          await file.rename(args[index + 1]).then((value) => print(
-              'rename file\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m is successfully!'));
+          await file.rename(args[index + 1]).then(
+                (value) => print(
+                  ProgressSuccessful(
+                    'rename file\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m',
+                  ),
+                ),
+              );
         }
         if (secondArg == 'dir') {
           final directory = Directory(args[index]);
-          await directory.rename(args[index + 1]).then((value) => print(
-              'rename directory\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m is successfully!'));
+          await directory.rename(args[index + 1]).then(
+                (value) => print(
+                  ProgressSuccessful(
+                    'rename directory\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m',
+                  ),
+                ),
+              );
         }
       }
     }
