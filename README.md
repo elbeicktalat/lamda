@@ -3,15 +3,11 @@
 Is a command line for the file management which allows you the creation and deletion with renaming files and
 directories.
 
-###### [make](#make)
-
-###### [delete](#delete)
-
-###### [rename](#rename)
-
-###### [copy](#copy)
-
-###### [cut](#cut)
+1. [make](#make)
+1. [delete](#delete)
+1. [rename](#rename)
+1. [copy](#copy)
+1. [cut](#cut)
 
 ### make
 
