@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:lamda/messages/already_exists.dart';
 import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
@@ -19,22 +20,30 @@ class Make extends Command {
       for (index = 2; index < args.length; index++) {
         if (optionArg == 'file') {
           final file = File(args[index]);
-          await file.create().then(
-                (value) => print(
-                  ProgressSuccessful(
-                    'create file <${Colors.green(args[index])}>',
-                  ),
-                ),
+          await file.exists().then(
+                (alreadyExists) => alreadyExists
+                    ? print(AlreadyExists('<${args[index]}>'))
+                    : file.create().then(
+                          (_) => print(
+                            ProgressSuccessful(
+                              'create file <${Colors.green(args[index])}>',
+                            ),
+                          ),
+                        ),
               );
         }
         if (optionArg == 'dir') {
-          final file = Directory(args[index]);
-          await file.create().then(
-                (value) => print(
-                  ProgressSuccessful(
-                    'create directory <${Colors.green(args[index])}>',
-                  ),
-                ),
+          final directory = Directory(args[index]);
+          await directory.exists().then(
+                (alreadyExists) => alreadyExists
+                    ? print(AlreadyExists('<${args[index]}>'))
+                    : directory.create(recursive: true).then(
+                          (_) => print(
+                            ProgressSuccessful(
+                              'create directory <${Colors.green(args[index])}>',
+                            ),
+                          ),
+                        ),
               );
         }
       }
