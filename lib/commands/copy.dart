@@ -14,16 +14,19 @@ class Copy implements Command {
 
   Future<void> copy(List<String> args) async {
     String firstArg;
+    int index;
     firstArg = args.first.toLowerCase();
     if (firstArg == command) {
-      final file = File(args[1]);
-      await file.copy(args[2]).then(
-            (value) => print(
-              ProgressSuccessful(
-                'copy <${Colors.blue(args[1])}> into <${Colors.green(args[2])}>',
+      for (index = 1; index < args.length - 1; index++) {
+        final file = File(args[index]);
+        await file.copy(args.last + '/' + args[index]).then(
+              (value) => print(
+                ProgressSuccessful(
+                  'copy <${Colors.blue(args[index])}> into <${Colors.green(args.last)}>',
+                ),
               ),
-            ),
-          );
+            );
+      }
     }
   }
 }
