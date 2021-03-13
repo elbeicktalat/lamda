@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
@@ -19,7 +20,7 @@ class Copy implements Command {
       await file.copy(args[2]).then(
             (value) => print(
               ProgressSuccessful(
-                'copy \x1B[34m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m',
+                'copy <${Colors.blue(args[1])}> into <${Colors.green(args[2])}>',
               ),
             ),
           );

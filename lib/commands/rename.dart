@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
@@ -24,7 +25,7 @@ class ReName implements Command {
           await file.rename(args[index + 1]).then(
                 (value) => print(
                   ProgressSuccessful(
-                    'rename file\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m',
+                    'rename file <${Colors.red(args[index])}> to <${Colors.green(args[index + 1])}>',
                   ),
                 ),
               );
@@ -34,7 +35,7 @@ class ReName implements Command {
           await directory.rename(args[index + 1]).then(
                 (value) => print(
                   ProgressSuccessful(
-                    'rename directory\x1B[31m <${args[index]}>\x1B[0m to \x1B[32m<${args[index + 1]}>\x1B[0m',
+                    'rename directory <${Colors.red(args[index])}> to <${Colors.green(args[index + 1])}>',
                   ),
                 ),
               );

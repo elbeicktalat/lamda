@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
@@ -21,7 +22,7 @@ class Delete implements Command {
         await file.delete(recursive: true).then(
               (value) => print(
                 ProgressSuccessful(
-                  'delete\x1B[31m <${args[index]}>\x1B[0m',
+                  'delete<${Colors.red(args[index])}>',
                 ),
               ),
             );

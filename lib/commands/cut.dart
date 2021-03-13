@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
@@ -20,7 +21,7 @@ class Cut implements Command {
       await file.delete().then(
             (value) => print(
               ProgressSuccessful(
-                'cut \x1B[31m<${args[1]}>\x1B[0m into \x1B[32m<${args[2]}>\x1B[0m',
+                'cut <${Colors.red(args[1])}> into <${Colors.green(args[2])}>',
               ),
             ),
           );

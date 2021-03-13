@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
@@ -24,7 +25,7 @@ class Make implements Command {
           await file.create().then(
                 (value) => print(
                   ProgressSuccessful(
-                    'create file\x1B[32m <${args[index]}>\x1B[0m',
+                    'create file <${Colors.green(args[index])}>',
                   ),
                 ),
               );
@@ -34,7 +35,7 @@ class Make implements Command {
           await file.create().then(
                 (value) => print(
                   ProgressSuccessful(
-                    'create directory\x1B[32m <${args[index]}>\x1B[0m',
+                    'create directory <${Colors.green(args[index])}>',
                   ),
                 ),
               );
