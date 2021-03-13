@@ -3,7 +3,7 @@ import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
-class Delete implements Command {
+class Delete extends Command {
   @override
   String get command => 'delete'.toLowerCase();
 
@@ -12,11 +12,8 @@ class Delete implements Command {
       'delete files and directories example: delete <fileName>';
 
   Future<void> delete(List<String> args) async {
-    int index;
-    String firstArg;
-
-    firstArg = args.first.toLowerCase();
-    if (firstArg == command) {
+    commandArg = args.first.toLowerCase();
+    if (commandArg == command) {
       for (index = 1; index < args.length; index++) {
         final file = File(args[index]);
         await file.delete(recursive: true).then(

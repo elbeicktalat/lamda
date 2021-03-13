@@ -3,24 +3,21 @@ import 'package:lamda/src/colors.dart';
 import 'package:lamda/src/command.dart';
 import 'package:lamda/src/progress_successful.dart';
 
-class Make implements Command {
+class Make extends Command {
+  @override
+  String get command => 'make'.toLowerCase();
+
   @override
   String get description =>
       "Type 'make file <name>' or 'make dir <name>' to create files & directories.";
 
-  @override
-  String get command => 'make'.toLowerCase();
-
   Future<void> make(List<String> args) async {
-    int index;
-    String firstArg;
-    String secondArg;
-    firstArg = args.first.toLowerCase();
-    secondArg = args[1].toLowerCase();
+    commandArg = args.first.toLowerCase();
+    optionArg = args[1].toLowerCase();
 
-    if (firstArg == command) {
+    if (commandArg == command) {
       for (index = 2; index < args.length; index++) {
-        if (secondArg == 'file') {
+        if (optionArg == 'file') {
           final file = File(args[index]);
           await file.create().then(
                 (value) => print(
@@ -30,7 +27,7 @@ class Make implements Command {
                 ),
               );
         }
-        if (secondArg == 'dir') {
+        if (optionArg == 'dir') {
           final file = Directory(args[index]);
           await file.create().then(
                 (value) => print(
