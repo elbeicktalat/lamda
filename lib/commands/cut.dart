@@ -14,17 +14,20 @@ class Cut implements Command {
 
   Future<void> cut(List<String> args) async {
     String firstArg;
+    int index;
     firstArg = args.first.toLowerCase();
     if (firstArg == command) {
-      final file = File(args[1]);
-      await file.copy(args[2]);
-      await file.delete().then(
-            (value) => print(
-              ProgressSuccessful(
-                'cut <${Colors.red(args[1])}> into <${Colors.green(args[2])}>',
+      for (index = 1; index < args.length - 1; index++) {
+        final file = File(args[index]);
+        await file.copy(args.last + '/' + args[index]);
+        await file.delete().then(
+              (value) => print(
+                ProgressSuccessful(
+                  'cut <${Colors.red(args[index])}> into <${Colors.green(args.last)}>',
+                ),
               ),
-            ),
-          );
+            );
+      }
     }
   }
 }
