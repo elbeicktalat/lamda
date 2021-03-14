@@ -1,9 +1,8 @@
 import 'package:lamda/commands/cut.dart';
-
-import 'commands/make.dart';
-import 'commands/delete.dart';
-import 'commands/rename.dart';
-import 'commands/copy.dart';
+import 'package:lamda/commands/make.dart';
+import 'package:lamda/commands/delete.dart';
+import 'package:lamda/commands/rename.dart';
+import 'package:lamda/commands/copy.dart';
 
 // This version must be updated in tandem with the pubspec version.
 const String appVersion = '1.0.0';

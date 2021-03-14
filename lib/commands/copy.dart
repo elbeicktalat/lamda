@@ -23,6 +23,7 @@ class Copy extends Command {
                   'copy <${Colors.blue(args[index])}> into <${Colors.green(args.last)}>',
                 ),
               ),
+              onError: (error) => print(error),
             );
       }
     }

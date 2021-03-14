@@ -24,6 +24,7 @@ class Cut extends Command {
                   'cut <${Colors.red(args[index])}> into <${Colors.green(args.last)}>',
                 ),
               ),
+              onError: (error) => print(error),
             );
       }
     }

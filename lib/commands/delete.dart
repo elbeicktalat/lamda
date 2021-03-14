@@ -17,12 +17,12 @@ class Delete extends Command {
       for (index = 1; index < args.length; index++) {
         final file = File(args[index]);
         await file.delete(recursive: true).then(
-              (value) => print(
-                ProgressSuccessful(
-                  'delete<${Colors.red(args[index])}>',
+            (_) => print(
+                  ProgressSuccessful(
+                    'delete<${Colors.red(args[index])}>',
+                  ),
                 ),
-              ),
-            );
+            onError: (error) => print(error));
       }
     }
   }

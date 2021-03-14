@@ -25,6 +25,7 @@ class ReName extends Command {
                     'rename file <${Colors.red(args[index])}> to <${Colors.green(args[index + 1])}>',
                   ),
                 ),
+                onError: (error) => print(error),
               );
         }
         if (optionArg == 'dir') {
@@ -35,6 +36,7 @@ class ReName extends Command {
                     'rename directory <${Colors.red(args[index])}> to <${Colors.green(args[index + 1])}>',
                   ),
                 ),
+                onError: (error) => print(error),
               );
         }
       }

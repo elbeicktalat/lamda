@@ -29,6 +29,7 @@ class Make extends Command {
                               'create file <${Colors.green(args[index])}>',
                             ),
                           ),
+                          onError: (error) => print(error),
                         ),
               );
         }
@@ -43,6 +44,7 @@ class Make extends Command {
                               'create directory <${Colors.green(args[index])}>',
                             ),
                           ),
+                          onError: (error) => print(error),
                         ),
               );
         }
